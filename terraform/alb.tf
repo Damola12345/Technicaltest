@@ -1,5 +1,5 @@
 resource "aws_lb" "test-alb" {
-  name               = "nodejs-api"
+  name               = "devop-api"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.lb_sg.id]
@@ -14,7 +14,7 @@ resource "aws_lb" "test-alb" {
 
   enable_deletion_protection = false
 
-  tags   = {
+  tags = {
     Name = "Test Alb"
   }
 }
@@ -48,7 +48,7 @@ resource "aws_lb_listener_rule" "test_rule" {
 }
 
 resource "aws_lb_target_group" "test-tg" {
-  name        = "nodejs-api-targetgroup"
+  name        = "devop-api-targetgroup"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = aws_vpc.vpc.id
