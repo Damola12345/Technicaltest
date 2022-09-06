@@ -35,7 +35,7 @@ resource "aws_security_group" "container_sg" {
 }
 
 resource "aws_security_group" "lb_sg" {
-  name        = "nodejs_api-alb"
+  name        = "devop_api-alb"
   description = "Allow load balancer traffic"
   vpc_id      = aws_vpc.vpc.id
 

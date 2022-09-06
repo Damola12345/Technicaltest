@@ -59,6 +59,6 @@ resource "aws_lb_target_group" "test-tg" {
     timeout             = 5
     path                = "/"
     interval            = 30
-    matcher             = "200,302"
+    matcher             = "200,302,404"
   }
 }

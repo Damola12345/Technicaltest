@@ -30,14 +30,14 @@ resource "aws_ecs_task_definition" "Task" {
   container_definitions = jsonencode([
     {
       name      = "devop-api-container"
-      image     = "xxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/devop-api"
+      image     = "431419854259.dkr.ecr.us-east-1.amazonaws.com/devop-api"
       cpu       = 256
       memory    = 512
       essential = true
       portMappings = [
         {
-          containerPort = 3000
-          hostPort      = 3000
+          containerPort = 2500
+          hostPort      = 2500
         }
       ],
 
@@ -58,7 +58,7 @@ resource "aws_ecs_task_definition" "Task" {
 #Create the service
 # terraform aws create ecs service
 resource "aws_ecs_service" "service" {
-  name            = "nodejs-api-service"
+  name            = "devop-api-service"
   depends_on      = [aws_lb_listener.test_listener, aws_lb_target_group.test-tg]
   cluster         = aws_ecs_cluster.ecs-cluster.id
   task_definition = aws_ecs_task_definition.Task.arn
@@ -73,7 +73,7 @@ resource "aws_ecs_service" "service" {
 
   load_balancer {
     target_group_arn = aws_lb_target_group.test-tg.id
-    container_name   = "nodejs-api-container"
-    container_port   = 3000
+    container_name   = "devop-api-container"
+    container_port   = 2500
   }
 }
