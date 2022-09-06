@@ -30,7 +30,7 @@ resource "aws_ecs_task_definition" "Task" {
   container_definitions = jsonencode([
     {
       name      = "devop-api-container"
-      image     = "431419854259.dkr.ecr.us-east-1.amazonaws.com/devop-api"
+      image     = "xxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/devop-api"
       cpu       = 256
       memory    = 512
       essential = true
